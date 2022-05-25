@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <body style="font-family: Arial, Helvetica, sans-serif;">
+        <!-- Manual number counter -->
+        <h1>Number add & subtract</h1>
+        <p id="number"></p>
+        <button onclick="add()">Add number</button>
+        <button onclick="subtract()">Subtract number</button>
+
+        <h1>Automatic counter</h1>
+        <p id="counter" style="color:blue"></p>
+        <p id="revertedcounter" style="color: red;"></p>
+        <button onclick="startCounter()">Start counter</button>
+        <button onclick="revertedCounter()">Revert counter</button>
+    </body>
+</html>
+
+<script>
+    let number = 0;
+
+    function add() {
+        var count = document.getElementById("number");
+        count.innerHTML = ++number;
+    }
+
+    function subtract() {
+        var count = document.getElementById("number");
+        count.innerHTML = --number;
+    }
+
+    function startCounter() {
+        var counts = setInterval(updated, 1);
+        let upto = 0;
+        function updated() {
+            var count = document.getElementById("counter");
+            count.innerHTML = ++upto;
+            if(upto === 2000) {
+                clearInterval(counts);
+            }
+        }
+    }
+
+    function revertedCounter() {
+        var counts = setInterval(updated, 1);
+        let downto = 2000;
+        function updated() {
+            var count = document.getElementById("revertedcounter");
+            count.innerHTML = --downto;
+            if(downto === 0) {
+                clearInterval(counts);
+            }
+        }
+    }
+</script>
